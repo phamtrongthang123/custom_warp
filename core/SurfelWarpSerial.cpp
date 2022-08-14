@@ -279,6 +279,7 @@ void surfelwarp::SurfelWarpSerial::ProcessNextFrameWithReinit(bool offline_save)
 			m_camera.GetWorld2CameraEigen(), m_camera.GetInitWorld2CameraEigen(),
 			save_dir, with_recent
 		);
+		saveCloud(observation, m_updated_geometry_index, save_dir);
 	}
 	
 	//Update the index
@@ -302,6 +303,17 @@ void surfelwarp::SurfelWarpSerial::saveCameraObservations(
 
 	//Save the raw depth image
 	Visualizer::SaveDepthImage(observation.raw_depth_img, (save_dir / "raw_depth.png").string());
+}
+
+
+void surfelwarp::SurfelWarpSerial::saveCloud(
+	const CameraObservation &observation,
+	unsigned vao_idx,
+	const boost::filesystem::path &save_dir
+) {
+	auto geometry = m_surfel_geometry[vao_idx]->Geometry();
+	Visualizer::SavePointCloud(geometry.reference_vertex_confid.ArrayView(), (save_dir / "reference.off").string());
+	Visualizer::SavePointCloud(observation.vertex_config_map, (save_dir / "observation.off").string());
 }
 
 

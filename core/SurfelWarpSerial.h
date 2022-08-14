@@ -96,6 +96,8 @@ namespace surfelwarp {
 		//The rendered solver maps, required the same cuda context (but not OpenGL context)
 		void saveSolverMaps(const Renderer::SolverMaps& solver_maps, const boost::filesystem::path& save_dir);
 		
+		void saveCloud(const CameraObservation &observation, unsigned vao_idx, const boost::filesystem::path &save_dir);
+
 		//Save the coorresponded geometry and obsertion
 		void saveCorrespondedCloud(const CameraObservation& observation, unsigned vao_idx, const boost::filesystem::path& save_dir);
 		
