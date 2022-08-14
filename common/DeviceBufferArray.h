@@ -87,7 +87,7 @@ namespace surfelwarp {
 		
 		void ResizeArrayOrException(size_t size) {
 			if (size > m_buffer.size()) {
-				LOG(FATAL) << "The pre-allocated buffer is not enough";
+				LOG(FATAL) << "The pre-allocated buffer is not enough (" << size << " > " << m_buffer.size() << ")";
 			}
 
 			//Change the size of array
