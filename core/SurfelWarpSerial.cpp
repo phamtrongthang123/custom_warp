@@ -388,7 +388,7 @@ boost::filesystem::path surfelwarp::SurfelWarpSerial::createOrGetDataDirectory(i
 	//Construct the path
 	boost::filesystem::path result_folder("output/frame_" + std::to_string(frame_idx));
 	if(!boost::filesystem::exists(result_folder)) {
-		boost::filesystem::create_directory(result_folder);
+		boost::filesystem::create_directories(result_folder);
 	}
 	
 	//The directory should be always exist
