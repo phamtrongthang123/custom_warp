@@ -8,8 +8,8 @@
 
 namespace surfelwarp { namespace device {
 	
-	__device__ __constant__ float4 reference_node_coordinates[d_max_num_nodes];
-
+	// __device__ __constant__ float4 reference_node_coordinates[d_max_num_nodes];
+	__device__  float4 reference_node_coordinates[d_max_num_nodes];
 
 	/* This kernel do skinning of both vertex and nodes given
 	 * node coordinate and vertex coordinate, vertex.w can not be used
